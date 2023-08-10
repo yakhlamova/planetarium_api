@@ -6,15 +6,15 @@ from planeyarium.views import (
     AstromyShowViewSet,
     ShowSessionViewSet,
     PlanetariumDomeViewSet,
-    ReservationViewSet
+    ReservationViewSet,
 )
 
 router = routers.DefaultRouter()
-router.register("show_theme", ShowThemeViewSet)
-router.register("astronomy_show", AstromyShowViewSet)
-router.register("planetarium_dome", PlanetariumDomeViewSet)
-router.register("show_session", ShowSessionViewSet)
-router.register("reservation", ReservationViewSet)
+router.register("show_themes", ShowThemeViewSet)
+router.register("shows", AstromyShowViewSet)
+router.register("planetarium_domes", PlanetariumDomeViewSet)
+router.register("show_sessions", ShowSessionViewSet)
+router.register("reservations", ReservationViewSet)
 
 urlpatterns = [path("", include(router.urls))]
 
