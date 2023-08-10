@@ -5,11 +5,17 @@ from django.db import models
 class ShowTheme(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     show_theme = models.ManyToManyField(ShowTheme)
+
+    def __str__(self):
+        return self.title
 
 
 class PlanetariumDome(models.Model):
@@ -32,10 +38,10 @@ class Reservation(models.Model):
 
 
 class Ticket(models.Model):
-    movie_session = models.ForeignKey(
+    show_session = models.ForeignKey(
         ShowSession, on_delete=models.CASCADE, related_name="tickets"
     )
-    order = models.ForeignKey(
+    reservation = models.ForeignKey(
         Reservation, on_delete=models.CASCADE, related_name="tickets"
     )
     row = models.IntegerField()
