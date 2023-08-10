@@ -12,8 +12,8 @@ from planeyarium.views import (
 router = routers.DefaultRouter()
 router.register("show_theme", ShowThemeViewSet)
 router.register("astronomy_show", AstromyShowViewSet)
-router.register("show_session", ShowSessionViewSet)
 router.register("planetarium_dome", PlanetariumDomeViewSet)
+router.register("show_session", ShowSessionViewSet)
 router.register("reservation", ReservationViewSet)
 
 urlpatterns = [path("", include(router.urls))]
