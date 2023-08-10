@@ -1,9 +1,7 @@
 from django.db.models import F, Count
-from django.shortcuts import render
 from datetime import datetime
 from rest_framework import viewsets, mixins, status
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
@@ -26,7 +24,7 @@ from planeyarium.serializers import (
     AstronomyShowDetailSerializer,
     ShowSessionListSerializer,
     ShowSessionDetailSerializer,
-    ReservationListSerializer
+    ReservationListSerializer,
 )
 
 
@@ -81,9 +79,7 @@ class AstromyShowViewSet(
         return AstronomyShowSerializer
 
 
-class ShowSessionViewSet(
-    viewsets.ModelViewSet
-):
+class ShowSessionViewSet(viewsets.ModelViewSet):
     queryset = (
         ShowSession.objects.all()
         .select_related("astronomy_show", "planetarium_dome")
@@ -144,7 +140,7 @@ class ReservationViewSet(
 ):
     queryset = Reservation.objects.prefetch_related(
         "tickets__show_session__astronomy_show",
-        "tickets__show_session__planetarium_dome"
+        "tickets__show_session__planetarium_dome",
     )
     serializer_class = ReservationSerializer
     pagination_class = ReservationPagination
@@ -161,4 +157,3 @@ class ReservationViewSet(
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-

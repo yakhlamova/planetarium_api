@@ -38,8 +38,12 @@ class PlanetariumDome(models.Model):
 
 
 class ShowSession(models.Model):
-    astronomy_show = models.ForeignKey(AstronomyShow, related_name="sessions", on_delete=models.CASCADE)
-    planetarium_dome = models.ForeignKey(PlanetariumDome, related_name="sessions", on_delete=models.CASCADE)
+    astronomy_show = models.ForeignKey(
+        AstronomyShow, related_name="sessions", on_delete=models.CASCADE
+    )
+    planetarium_dome = models.ForeignKey(
+        PlanetariumDome, related_name="sessions", on_delete=models.CASCADE
+    )
     show_time = models.DateTimeField()
 
     class Meta:
@@ -49,24 +53,17 @@ class ShowSession(models.Model):
     def validate_show_time(show_time, error_to_raise):
         now = timezone.now().astimezone(timezone.get_current_timezone())
         if not (now < utc.localize(show_time)):
-            raise error_to_raise(
-                {
-                    "show_time": f"Show time must be lather than today!"
-                }
-            )
+            raise error_to_raise({"show_time": f"Show time must be lather than today!"})
 
     def clean(self):
-        ShowSession.validate_show_time(
-            self.show_time,
-            ValidationError
-        )
+        ShowSession.validate_show_time(self.show_time, ValidationError)
 
     def save(
-            self,
-            force_insert=False,
-            force_update=False,
-            using=None,
-            update_fields=None,
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
     ):
         self.full_clean()
         return super(ShowSession, self).save(
@@ -79,9 +76,7 @@ class ShowSession(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["-created_at"]
@@ -111,9 +106,9 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name: f"{ticket_attr_name} "
-                                          f"number must be in available range: "
-                                          f"(1, {planetarium_dome_attr_name}): "
-                                          f"(1, {count_attrs})"
+                        f"number must be in available range: "
+                        f"(1, {planetarium_dome_attr_name}): "
+                        f"(1, {count_attrs})"
                     }
                 )
 
@@ -126,11 +121,11 @@ class Ticket(models.Model):
         )
 
     def save(
-            self,
-            force_insert=False,
-            force_update=False,
-            using=None,
-            update_fields=None,
+        self,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
     ):
         self.full_clean()
         return super(Ticket, self).save(
@@ -138,9 +133,7 @@ class Ticket(models.Model):
         )
 
     def __str__(self):
-        return (
-            f"{str(self.show_session)} (row: {self.row}, seat: {self.seat})"
-        )
+        return f"{str(self.show_session)} (row: {self.row}, seat: {self.seat})"
 
     class Meta:
         unique_together = ("show_session", "row", "seat")

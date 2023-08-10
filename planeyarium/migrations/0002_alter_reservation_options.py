@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('planeyarium', '0001_initial'),
+        ("planeyarium", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='reservation',
-            options={'ordering': ['-created_at']},
+            name="reservation",
+            options={"ordering": ["-created_at"]},
         ),
     ]
