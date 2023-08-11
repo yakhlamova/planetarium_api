@@ -92,6 +92,7 @@ If you don't have Docker installed, you can download and install it from the off
 The API documentation can be accessed at http://localhost:8000/swagger/ which provides an interactive interface to explore and test the available API endpoints.
 
 ## DB Structure
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/e2742605-0429-4615-9638-84a8cb840139)
 
 
 ## Contributing
