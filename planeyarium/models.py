@@ -1,24 +1,39 @@
+import os
+import uuid
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from pytz import utc
 
 
 class ShowTheme(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        app_label = "planeyarium"
+
     def __str__(self):
         return self.name
+
+
+def movie_image_file_path(movie, filename):
+    _, extension = os.path.splitext(filename)
+    filename = f"{slugify(movie.title)}-{uuid.uuid4()}{extension}"
+    return os.path.join("uploads/movies/", filename)
 
 
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     show_theme = models.ManyToManyField(ShowTheme)
+    image = models.ImageField(null=True, upload_to=movie_image_file_path)
 
     class Meta:
         ordering = ["title"]
+        app_label = "planeyarium"
 
     def __str__(self):
         return self.title
@@ -28,6 +43,9 @@ class PlanetariumDome(models.Model):
     name = models.CharField(max_length=255)
     rows = models.IntegerField()
     seats_in_row = models.IntegerField()
+
+    class Meta:
+        app_label = "planeyarium"
 
     @property
     def capacity(self) -> int:
@@ -48,6 +66,7 @@ class ShowSession(models.Model):
 
     class Meta:
         ordering = ["-show_time"]
+        app_label = "planeyarium"
 
     @staticmethod
     def validate_show_time(show_time, error_to_raise):
@@ -80,6 +99,7 @@ class Reservation(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        app_label = "planeyarium"
 
     def __str__(self):
         return str(self.created_at)
@@ -138,3 +158,4 @@ class Ticket(models.Model):
     class Meta:
         unique_together = ("show_session", "row", "seat")
         ordering = ["row", "seat"]
+        app_label = "planeyarium"
