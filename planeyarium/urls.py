@@ -20,5 +20,3 @@ router.register("show_sessions", ShowSessionViewSet)
 router.register("reservations", ReservationViewSet)
 
 urlpatterns = [path("", include(router.urls))]
-
-

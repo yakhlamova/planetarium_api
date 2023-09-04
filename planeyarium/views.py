@@ -1,12 +1,25 @@
-from django.db.models import F, Count
+from django.db.models import (
+    F,
+    Count
+)
 from datetime import datetime
-from drf_spectacular.utils import extend_schema, OpenApiParameter
-from rest_framework import viewsets, mixins, status
+from drf_spectacular.utils import (
+    extend_schema,
+    OpenApiParameter
+)
+from rest_framework import (
+    viewsets,
+    mixins,
+    status
+)
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import (
+    IsAuthenticated,
+    IsAdminUser
+)
 
 from planeyarium.permissions import IsAdminOrIfAuthenticatedReadOnly
 from planeyarium.models import (
@@ -27,7 +40,8 @@ from planeyarium.serializers import (
     AstronomyShowDetailSerializer,
     ShowSessionListSerializer,
     ShowSessionDetailSerializer,
-    ReservationListSerializer, AstronomyShowImageSerializer,
+    ReservationListSerializer,
+    AstronomyShowImageSerializer,
 )
 
 
@@ -53,11 +67,9 @@ class AstromyShowViewSet(
 
     @staticmethod
     def _params_to_ints(qs):
-        """Converts a list of string IDs to a list of integers"""
         return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
-        """Retrieve the astronomy shows with filters"""
         title = self.request.query_params.get("title")
         show_themes = self.request.query_params.get("show_themes")
 

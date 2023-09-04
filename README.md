@@ -9,9 +9,9 @@ Welcome to the Planetarium API project! This API is designed to manage astronomy
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [API Endpoints](#api-endpoints)
 - [API Documentation](#api-documentation)
 - [DB Structure](#db-structure)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 
 ## Features
@@ -34,9 +34,9 @@ Welcome to the Planetarium API project! This API is designed to manage astronomy
 ## Getting Started
 
 ### Prerequisites
-* Python (version 3.6 or higher) and pip installed on your system
+* Python (version 3.6 or higher)
 * Git (optional, for cloning the repository)
-
+* Docker
 
 ### Installation
 To set up the Planetarium API project using Docker, follow these steps:
@@ -69,30 +69,13 @@ If you don't have Docker installed, you can download and install it from the off
     ``` bash 
     docker-compose up
    ```
-## API Endpoints
-```
-"planetarium":
-    "show_themes": "http://127.0.0.1:8000/api/planetarium/show_themes/",
-    "astronomy_shows": "http://127.0.0.1:8000/api/planetarium/astronomy_shows/",
-    "planetarium_domes": "http://127.0.0.1:8000/api/planetarium/planetarium_domes/",
-    "show_sessions": "http://127.0.0.1:8000/api/planetarium/show_sessions/",
-    "reservations": "http://127.0.0.1:8000/api/planetarium/reservations/"
-
-"user":
-    "registration": "http://127.0.0.1:8000/api/user/register/"
-	"token": "http://127.0.0.1:8000/api/user/token/"
-	
-"documentatoin": 
-	"http://127.0.0.1:8000/api/schema/" 
-	"http://127.0.0.1:8000/api/schema/swagger/" 
-	"http://127.0.0.1:8000/api/schema/redoc/"
-```
 
 ## API Documentation
 The API documentation can be accessed at http://localhost:8000/swagger/ which provides an interactive interface to explore and test the available API endpoints.
 
 ## DB Structure
 
+## Screenshots
 
 ## Contributing
 I welcome contributions to improve the Planetarium API Service. Feel free to submit bug reports, feature requests, or pull requests to `yanaakhlamova@gmail.com`

@@ -60,7 +60,7 @@ class UnauthenticatedAstronomyShowApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_authenticate_required(self):
+    def test_authentication_required(self):
         res = self.client.get(ASTRONOMY_SHOW_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
