@@ -77,6 +77,12 @@ The API documentation can be accessed at http://localhost:8000/swagger/ which pr
 ![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/e2742605-0429-4615-9638-84a8cb840139)
 
 ## Screenshots
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/81979b32-11ab-47a4-93cd-87f884e66f88)
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/f79e3e12-1807-430a-8574-e9f503d12b03)
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/47e60975-3488-46a2-9530-2a90c6318e90)
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/ede76a08-095c-4f20-b4f2-7b5fb8c3bbc3)
+![image](https://github.com/yakhlamova/planetarium_api/assets/132567947/2f90cccc-ac28-415d-90b6-22f2b0cec278)
+
 
 ## Contributing
 I welcome contributions to improve the Planetarium API Service. Feel free to submit bug reports, feature requests, or pull requests to `yanaakhlamova@gmail.com`
